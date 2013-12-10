@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>index</title>
+    <meta charset="utf-8" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            var es = new EventSource("stream");
+            es.onmessage = function(e) {
+                $("#log").html($("#log").html() + "<p>Event: " + e.event + " data: " + e.data + "</p>");
+            };
+        })
+    </script>
+</head>
+<body>
+before
+<div id="log"></div>
+after
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>index</title>
+    <meta charset="utf-8" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>
+        function log_append(action, msg) {
+            $("#log").html($("#log").html() + "<p>" + action + ": " + msg + "</p>");
+        }
+        $(document).ready(function() {
+            var ws = new WebSocket('ws://172.16.192.128:8080/websocket');
+            ws.onopen = function(e) {
+                log_append('server', 'opened');
+                var hello = 'Hello server.';
+                ws.send(hello);
+                log_append('send', hello);
+            };
+            ws.onmessage = function(e) {
+                log_append('recv', e.data);
+            };
+            ws.onclose = function(e) {
+                log_append('server', 'closed');
+            };
+        })
+    </script>
+</head>
+<body>
+<div id="log" style="font-family: courier; font-size: 0.75em;"></div>
+</body>
+</html>

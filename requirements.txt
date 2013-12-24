@@ -1,0 +1,8 @@
+Django==1.6.1
+Genshi==0.7
+Jinja2==2.7.1
+Mako==0.9.0
+bottle==0.11.6
+## FIXME: could not find svn URL in dependency_links for this package:
+elementtree==1.2.6-20050316
+tornado==3.1.1
